@@ -3,19 +3,31 @@
 	<groupId>com.test</groupId>
 	<artifactId>maven-release-plugin-example</artifactId>
 	<version>0.2-SNAPSHOT</version>
-	<scm>
+	<!--<scm>
 		<url>https://github.com/arpitaggarwal/maven-release-plugin-example</url>
 		<connection>scm:git:https://github.com/arpitaggarwal/maven-release-plugin-example.git</connection>
       <tag>HEAD</tag>
-  </scm>
+  </scm>-->
+
+	<scm>
+            <connection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/pankajbhalerao2021/maven-release-plugin-example</connection>
+            <url>scm:git:https://github.com/pankajbhalerao2021/maven-release-plugin-example</url>
+            <developerConnection>scm:git:https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/pankajbhalerao2021/maven-release-plugin-example</developerConnection>
+            <tag>HEAD</tag>
+        </scm>
 	
 	<!-- Repository Information -->
 	<distributionManagement>
 		<repository>
-			<id>nexus-releases</id>
-			<!-- http://localhost:8081/repository/<repository-name> -->
-			<url>http://localhost:8081/repository/api-release</url>
+			<id>nexus</id>
+			<name>maven-release</name>
+			<url>http://10.128.0.4:8081/repository/maven-releases/</url>
 		</repository>
+		<snapshotRepository>
+			<id>nexus</id>
+			<name>nexus-snapshots</name>
+			<url>http://10.128.0.4:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
 	</distributionManagement>
 	<profiles>
 		<profile>
